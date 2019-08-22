@@ -24,8 +24,8 @@ var commentRoutes       = require("./routes/comments"),
     indexRoutes         = require("./routes/index")
     port    			      = process.env.PORT || 3000;
       
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
-// mongoose.connect("mongodb+srv://jvikre:pass13@cluster0-48b1o.mongodb.net/yelpcamp?retryWrites=true&w=majority", { useNewUrlParser: true });
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";
+mongoose.connect(url, { useNewUrlParser: true });
 
 
 app.use(bodyParser.urlencoded({extended: true}));
