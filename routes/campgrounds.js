@@ -77,8 +77,7 @@ router.get("/", function(req, res){
 router.post("/", middleware.isLoggedIn, upload.single('image'), function(req, res){
   geocoder.geocode(req.body.location, function (err, data) {
     if (err || !data.length) {
-      req.flash('error', 'Invalid address');
-      console.log(err.message);
+      req.flash('error', err.message);
       return res.redirect('back');
     }
     req.body.campground.lat = data[0].latitude;
